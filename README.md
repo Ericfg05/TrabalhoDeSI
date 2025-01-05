@@ -63,6 +63,6 @@ Você pode inclusive visualizar os certificados
 **Imagem do teste na URL FIREWALL NEGANDO O SERVIÇO:**
 ![Teste da negação do firewall com uso da url](Imagens/print_negacao.png)
 
-***Observações***
+***Considerações finais***
 
-**Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script**
+Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script

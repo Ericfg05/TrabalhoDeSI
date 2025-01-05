@@ -22,3 +22,4 @@ O servidor deve estar devidamenter seguro, para que seja atingido essa necessida
  ***Razão de uso de cada Ferramentas***
 
  **TLS ou SSL:** Essa ferramenta foi escolhido por ser uma ferramenta com capacidade de criptografar as requisições entre usuario e servidor, sendo, muito util para transação com uso de cartão de crédito 
+comando: sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout apache.key -out apache.crt

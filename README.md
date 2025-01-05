@@ -52,6 +52,6 @@ Para realizar o teste do projeto do ssl e bem simples,usando a url do seu site o
 Para esse teste e necessário utilizar o termianl linux que pode ser aberto com comando control + alt + t, e nele você usará o comando curl -k https://192.168.56.24 é assim o site será impresso na sua tela do terminal, isso demonstra que o firewall está aceitando a porta 443 do apache. Mas e negação das demais portas? para isso rode o comando curl http://192.168.56.24:8080, você notará que o terminal retornará um erro, ou um time out que significa que foi barrado a seu acesso pelo firewall, você também pode usar a url no seu navegador, http://192.168.56.24:8080, e receberá uma mensagem de o servidor demorou para responder ou algo assim.
 
 ***imagem demonstrando como será impresso o site***
-![ TrabalhoDeSI
+![
 /imagens/print_https.png
 ](imagens/print_https.png)

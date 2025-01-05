@@ -55,11 +55,14 @@ Para esse teste e necessário utilizar o termianl linux que pode ser aberto com 
 ![Imagem funcional do https](Imagens/print_https.png)
 Você pode inclusive visualizar os certificados
 
+
 **Imagem do teste no terminal FIREWALL:**
 ![Teste do firewall](Imagens/print_acessofirewaal.png)
+
 
 **Imagem do teste na URL FIREWALL NEGANDO O SERVIÇO:**
 ![Teste da negação do firewall com uso da url](Imagens/print_negacao.png)
 
 ***Observações***
+
 **Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script**

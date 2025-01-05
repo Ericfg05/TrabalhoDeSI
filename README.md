@@ -51,5 +51,15 @@ Para realizar o teste do projeto do ssl e bem simples,usando a url do seu site o
 **Firewall**
 Para esse teste e necessário utilizar o termianl linux que pode ser aberto com comando control + alt + t, e nele você usará o comando curl -k https://192.168.56.24 é assim o site será impresso na sua tela do terminal, isso demonstra que o firewall está aceitando a porta 443 do apache. Mas e negação das demais portas? para isso rode o comando curl http://192.168.56.24:8080, você notará que o terminal retornará um erro, ou um time out que significa que foi barrado a seu acesso pelo firewall, você também pode usar a url no seu navegador, http://192.168.56.24:8080, e receberá uma mensagem de o servidor demorou para responder ou algo assim.
 
-***imagem demonstrando como será impresso o site***
+***imagem demonstrando como será impresso o site:***
 ![Imagem funcional do https](Imagens/print_https.png)
+Você pode inclusive visualizar os certificados
+
+**Imagem do teste no terminal FIREWALL:**
+![Teste do firewall](Imagens/print_acessofirewaal.png)
+
+**Imagem do teste na URL FIREWALL NEGANDO O SERVIÇO:**
+![Teste da negação do firewall com uso da url](Imagens/print_negacao.png)
+
+***Observações***
+**Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script**

@@ -57,7 +57,7 @@ Para esse teste e necessário utilizar o termianl linux que pode ser aberto com 
 
 ***imagem demonstrando como será impresso o site:***
 ![Imagem funcional do https](Imagens/imagem-terminal-https.png)
-Você pode inclusive visualizar os certificados
+
 
 
 **Imagem do teste no terminal FIREWALL:**
@@ -79,3 +79,17 @@ Você pode inclusive visualizar os certificados
 ***Considerações finais***
 
 Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script
+
+
+**Comandos a serem utilizados na apresentação**
+ - vagrant up (rodar a VM)
+ - vagrant status (mostrar que a VM está rodando)
+ - sudo docker ps (verificar se subiu todos os conteiners)
+ - sudo tail -f /var/log/auth.log (verificar os logs que tiveram no servidor)
+ - sudo cat /var/log/auth.log (vizualização dos logs completos)
+ - curl -k https://192.168.56.24 (retornar o site com o protocolo ssl instalado)
+ - curl http://192.168.56.24:8080 (mostrar que a porta 80 está bloqueada)
+ - ssh invaliduser@192.168.56.24 (tentar acessar a maquina para poder  o fail2ban travar)
+ - sudo tail -f /var/log/auth.log (verificar os logs de autenticação)
+ - sudo fail2ban-client status sshd (mostrar informações sobre o fail2ban, como os usuarios que foram banidos, por ter estourado o limite de tentaivas)
+

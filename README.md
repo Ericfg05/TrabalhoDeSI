@@ -18,12 +18,15 @@ Qualquer site que possua a media de 4 requisições p/s, sendo, sites de compras
 O servidor deve estar devidamente seguro, para que seja atingido essa necessidade, será feito algumas implementações para ter um impacto siguinificativo na segurança do servidor. Serviços que serão implementados:
 	- SSL/TLS;
  	- Firewall;
+	- Fail2ban;
   
  ***Razão de uso de cada Ferramentas***
 
  **SSL/TLS:** Essa ferramenta foi escolhido por ser uma ferramenta com capacidade de criptografar as requisições entre usuario e servidor, sendo, muito util para transação com uso de cartão de crédito é entregas de informações dos usuários e seus dados, assim, no tráfego dessas informações algum usuário malicioso tentar roubar os dados por análise de tráfego, será dificultado o acesso aos dados, pois, estarão criptografados.
 
- **FIREWALL:* Essa ferramenta tem por sua vez varias utilizadades, pois o firewall e capaz de barrar acessos e liberar acessos ao computador por varias formas. No cenário do servidor criado, ele funcionou com um bloqueador de acessos as demais portas do servidor, sendo assim, um usuário malicioso tentar acessar o computador por alguma das 65.535 portas que o computador possuí o firewall iria barrar dando time out no acesso desse usuário, com excessão de apenas uma porta que foi liberada, a porta 443 que configura como uma porta https do servidor apache, que o mesmo e o servidor de implementação e anexo dos sites.
+ **FIREWALL:** Essa ferramenta tem por sua vez varias utilizadades, pois o firewall e capaz de barrar acessos e liberar acessos ao computador por varias formas. No cenário do servidor criado, ele funcionou com um bloqueador de acessos as demais portas do servidor, sendo assim, um usuário malicioso tentar acessar o computador por alguma das 65.535 portas que o computador possuí o firewall iria barrar dando time out no acesso desse usuário, com excessão de apenas uma porta que foi liberada, a porta 443 que configura como uma porta https do servidor apache, que o mesmo e o servidor de implementação e anexo dos sites.
+
+ **Fail2Ban:** Permitir que consiga fazer o rastreamento dos pacotes e banir os que tiverem com tentativas falhas de acessar a maquina, desse modo consigo evitar que tenha ataque de força bruta e outras atividades maliciosas. Pois ele monitora os logs so sistema em tempo real e toma medidas contra IPs suspeitos.
 
 ***Como rodar o projeto?***
 **O que há no projeto** 
@@ -36,12 +39,13 @@ Nesse projeto possui alguns arquivos necessários para que seja implementado da 
      	- vagrantfile: arquvio usado para subir a maquina virtual que aplicará as configuração usadas;
       	- pasta sites: local que são arquivados os sites para serem expostos;
        	- pasta ssl: local onde encontra os dois arquvios que são o certificado digital(apache.crt) e a chave de privada(apache.key);
+		- provision: Local onde estão as configurações de segurança e linhas de comando para rodar o servidor.
 	
 **Para roda o projeto**
 Para rodar o projeto e necessário o uso de alguns comandos (terminal linux), veja a lista abaixo:
 	- Criar seu proprio certificado(opcional): sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout apache.key -out apache.crt;
  	- vagrant up: roda o vagrantfile;
-  	- vagrant ssh (opcional): acessa a vm depois que estiver fianlizado;
+  	- vagrant ssh (opcional): acessa a vm depois que estiver finalizado;
 
 ***Testes para realizar o funcionamento***
 
@@ -63,6 +67,29 @@ Você pode inclusive visualizar os certificados
 **Imagem do teste na URL FIREWALL NEGANDO O SERVIÇO:**
 ![Teste da negação do firewall com uso da url](Imagens/print_negacao.png)
 
+**Imagem do teste para o fail2ban fazer o bloqueio do IP:**
+![Teste para acessar o servidor e o fail2ban funcionando](Imagens/imagem-teste-fail2ban.jpeg)
+
+
+**Imagem do dos logs forneceidos pelo fail2ban:**
+![Tela de logs do usuario que foi banido](Imagens/imagem-logs.jpeg)
+
+
+
 ***Considerações finais***
 
 Dessa maneira o projeto foi aplicando e testado com sucesso, lembrando que você pode configurar da maneira que desejar e melhorar o script
+
+
+**Comandos a serem utilizados na apresentação**
+ - vagrant up (rodar a VM)
+ - vagrant status (mostrar que a VM está rodando)
+ - sudo docker ps (verificar se subiu todos os conteiners)
+ - sudo tail -f /var/log/auth.log (verificar os logs que tiveram no servidor)
+ - sudo cat /var/log/auth.log (vizualização dos logs completos)
+ - curl -k https://192.168.56.24 (retornar o site com o protocolo ssl instalado)
+ - curl http://192.168.56.24:8080 (mostrar que a porta 80 está bloqueada)
+ - ssh invaliduser@192.168.56.24 (tentar acessar a maquina para poder  o fail2ban travar)
+ - sudo tail -f /var/log/auth.log (verificar os logs de autenticação)
+ - sudo fail2ban-client status sshd (mostrar informações sobre o fail2ban, como os usuarios que foram banidos, por ter estourado o limite de tentaivas)
+

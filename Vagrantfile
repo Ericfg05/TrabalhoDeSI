@@ -5,5 +5,5 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./", "/arquivos"
   config.vm.network "private_network", ip: "192.168.56.24"
 
-  config.vm.provision "shell", path: " provision.sh"
+  config.vm.provision "shell", path: "provision.sh"
 end
